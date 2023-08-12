@@ -2,9 +2,12 @@ const express = require('express');
 const app = express();
 
 // Setting the Template Engine EJS
-// Note. Template engines are responsible for dinamically
-// rendering data on HTML pages
+// Note. It's responsible for dinamically rendering data on HTML pages
 app.set('view engine', 'ejs')
+
+// Middleware for handling static files requests, e.g. img, css, js, html, etc.
+// The route /static maps the content of the directory assets
+app.use('/static', express.static('assets'));
 
 // Routes
 app.get('/', (req, res) => {
