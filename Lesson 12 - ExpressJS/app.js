@@ -5,17 +5,27 @@ const app = express();
 // Note. It's responsible for dinamically rendering data on HTML pages
 app.set('view engine', 'ejs')
 
-// Middleware for handling static files requests, e.g. img, css, js, html, etc.
+// Middlewares 
+
+// Handles static files requests, e.g. img, css, js, html, etc.
 // The route /static maps the content of the directory assets
 app.use('/static', express.static('assets'));
+
+// Body requests will be parsed as a object
+app.use(express.urlencoded({ extended: true}))
 
 // Routes
 app.get('/', (req, res) => {
     res.render('index');
 });
 
-// Query strings
+app.post('/contact', (req,res) => {
+    console.log(req.body);
+    res.redirect('/contact')
+});
+
 app.get('/contact', (req, res) => {
+    // Query strings
     // Express parses query strings for you and saves on req.query
     // e.g. /contact?dept=marketing&person=joe is parsed to {dept: 'marketing', person: 'joe'}
     const queryString = req.query;
@@ -24,8 +34,8 @@ app.get('/contact', (req, res) => {
     res.render('contact', {qs: queryString});
 });
 
-// Route params
 app.get('/profile/:name', (req, res) => {
+    // Route params
     // Get params from the request
     const { name } = req.params;
 
