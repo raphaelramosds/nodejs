@@ -8,11 +8,11 @@ app.set('view engine', 'ejs')
 
 // Routes
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+    res.render('index');
 });
 
 app.get('/contact', (req, res) => {
-    res.send('This is the contact page');
+    res.render('contact');
 });
 
 // Route params
@@ -26,5 +26,5 @@ app.get('/profile/:name', (req, res) => {
 });
 
 app.listen(3000, (err) => {
-    console.log('Server is running')
+    console.log('Server is running');
 });

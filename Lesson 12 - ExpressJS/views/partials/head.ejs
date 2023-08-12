@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My website</title>
+    <title><%= title %></title>
     <style>
         body {
             background-color: skyblue;
@@ -29,8 +29,6 @@
 </head>
 
 <body>
-    <h1>Welcome</h1>
-    <p>I supposed you got this html page by a Node.js server, am I right? I knew it! So, enjoy this website</p>
-</body>
 
-</html>
+    <!-- Navbar -->
+    <%- include('nav.ejs'); %>
