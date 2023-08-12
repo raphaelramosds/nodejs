@@ -20,6 +20,7 @@ app.get('/contact', (req, res) => {
 
 // Route params
 app.get('/profile/:name', (req, res) => {
+    // Get params from the request
     const { name } = req.params;
 
     // Go to views and find the view profile
