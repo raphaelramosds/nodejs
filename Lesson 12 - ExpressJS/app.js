@@ -14,8 +14,14 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+// Query strings
 app.get('/contact', (req, res) => {
-    res.render('contact');
+    // Express parses query strings for you and saves on req.query
+    // e.g. /contact?dept=marketing&person=joe is parsed to {dept: 'marketing', person: 'joe'}
+    const queryString = req.query;
+
+    // Go to views and render the contact profile
+    res.render('contact', {qs: queryString});
 });
 
 // Route params
@@ -23,7 +29,7 @@ app.get('/profile/:name', (req, res) => {
     // Get params from the request
     const { name } = req.params;
 
-    // Go to views and find the view profile
+    // Go to views and render the view profile
     res.render('profile', {
         person: name
     });
